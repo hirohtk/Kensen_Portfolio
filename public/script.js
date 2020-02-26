@@ -69,6 +69,27 @@ var portfolio = [
         deployed: "https://immense-caverns-47364.herokuapp.com/",
         type: "FS"
     },
+    {
+        name: "News Scraper",
+        img: "images/newspaper-760x506 (1).jpg",
+        repo: "https://github.com/hirohtk/news_scraper_assignment",
+        deployed: "https://glacial-crag-21152.herokuapp.com/",
+        type: "FS"
+    },
+    {
+        name: "React - Click Game",
+        img: "images/majestic.png",
+        repo: "https://github.com/hirohtk/react_click_game",
+        deployed: "https://hirohtk.github.io/react_click_game/",
+        type: "FE"
+    },
+    {
+        name: "React - Books App",
+        img: "images/books.jpg",
+        repo: "https://github.com/hirohtk/google_books_react_mongoose",
+        deployed: "https://thawing-cove-16195.herokuapp.com/",
+        type: "FS"
+    },
 ]
 
 // SORTING:  Can make new objects and push based on date created (need to add field), etc
@@ -101,10 +122,10 @@ $(document).ready(function () {
             var cardContentChild = $("<span class='card-title activator grey-text text-darken-4'>" + folio[i].name + "</span>");
             var cardReveal = $("<div class='card-reveal'></div>");
             var cardRevealChild1 = $("<span class='card-title grey-text text-darken-4'>" + folio[i].name + "<i class='material-icons right'>close</i></span>");
-            var cardRevealChild2 = $("<p>Github Repository: " + folio[i].repo + "</p>");
-            var cardRevealChild3 = $("<p>Deployed Application: " + folio[i].deployed + "</p>");
+            var cardRevealChild2 = $("<p>Github Repository: <a href=" + "'" + folio[i].repo + "'" + "target=_blank>" + folio[i].repo + "</a></p>");
+            var cardRevealChild3 = $("<p>Deployed Application: <a href=" + "'" + folio[i].deployed + "'" + "target=_blank>" + folio[i].deployed + "</a></p>");
 
-            if (i < 4) {
+            if (i < 4 || i > 11 && i < 16) {
                 $("#col1").append(outerDiv);
                 append();
             }
@@ -154,8 +175,8 @@ $(document).ready(function () {
                 var cardContentChild = $("<span class='card-title activator grey-text text-darken-4'>" + folio[i].name + "</span>");
                 var cardReveal = $("<div class='card-reveal'></div>");
                 var cardRevealChild1 = $("<span class='card-title grey-text text-darken-4'>" + folio[i].name + "<i class='material-icons right'>close</i></span>");
-                var cardRevealChild2 = $("<p>Github Repository: " + folio[i].repo + "</p>");
-                var cardRevealChild3 = $("<p>Deployed Application: " + folio[i].deployed + "</p>");
+                var cardRevealChild2 = $("<p>Github Repository: <a href=" + "'" + folio[i].repo + "'" + ">" + folio[i].repo + "</a></p>");
+                var cardRevealChild3 = $("<p>Deployed Application: <a href=" + "'" + folio[i].deployed + "'" + ">" + folio[i].deployed + "</a></p>");
     
                 switch (folio[i].type) {
                     case "FE": 
@@ -172,6 +193,8 @@ $(document).ready(function () {
                     break;
                 }
             }
+            // $(".thumbnail").addClass("thumbnailFade");
+            // setTimeout(function () {$(".thumbnail").removeClass("thumbnailFade")}, 100);
         }
 
         sort(portfolio);
