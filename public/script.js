@@ -69,6 +69,34 @@ var portfolio = [
         deployed: "https://immense-caverns-47364.herokuapp.com/",
         type: "FS"
     },
+    {
+        name: "News Scraper",
+        img: "images/newspaper-760x506 (1).jpg",
+        repo: "https://github.com/hirohtk/news_scraper_assignment",
+        deployed: "https://glacial-crag-21152.herokuapp.com/",
+        type: "FS"
+    },
+    {
+        name: "React - Click Game",
+        img: "images/majestic.png",
+        repo: "https://github.com/hirohtk/react_click_game",
+        deployed: "https://hirohtk.github.io/react_click_game/",
+        type: "FE"
+    },
+    {
+        name: "React - Books App",
+        img: "images/books.jpg",
+        repo: "https://github.com/hirohtk/google_books_react_mongoose",
+        deployed: "https://thawing-cove-16195.herokuapp.com/",
+        type: "FS"
+    },
+    {
+        name: "Project - VolunTeam",
+        img: "https://media.giphy.com/media/xUA7b4arnbo3THfzi0/giphy.gif",
+        repo: "https://github.com/ajperkins92/Project-3",
+        deployed: "https://quiet-hamlet-85082.herokuapp.com/",
+        type: "FS"
+    },
 ]
 
 // SORTING:  Can make new objects and push based on date created (need to add field), etc
@@ -101,18 +129,20 @@ $(document).ready(function () {
             var cardContentChild = $("<span class='card-title activator grey-text text-darken-4'>" + folio[i].name + "</span>");
             var cardReveal = $("<div class='card-reveal'></div>");
             var cardRevealChild1 = $("<span class='card-title grey-text text-darken-4'>" + folio[i].name + "<i class='material-icons right'>close</i></span>");
-            var cardRevealChild2 = $("<p>Github Repository: " + folio[i].repo + "</p>");
-            var cardRevealChild3 = $("<p>Deployed Application: " + folio[i].deployed + "</p>");
+            var cardRevealChild2 = $("<p>Github Repository: <a href=" + "'" + folio[i].repo + "'" + "target=_blank>" + folio[i].repo + "</a></p>");
+            var cardRevealChild3 = $("<p>Deployed Application: <a href=" + "'" + folio[i].deployed + "'" + "target=_blank>" + folio[i].deployed + "</a></p>");
 
-            if (i < 4) {
+            if (i < 5 || i > 12 && i < 17) {
                 $("#col1").append(outerDiv);
                 append();
             }
-            if (i > 3 && i < 8) {
+
+            if (i > 4 && i < 10) {
                 $("#col2").append(outerDiv);
                 append();
             }
-            if (i > 7 && i < 12) {
+
+            if (i > 9 && i < 15) {
                 $("#col3").append(outerDiv);
                 append();
             }
@@ -122,6 +152,7 @@ $(document).ready(function () {
     populate(portfolio);
 
     // SORTING
+
     $("#sortButton").on("click", function () {
         $("#col1").empty();
         $("#col1").append("<h5 class='types'>Front End</h5>");
@@ -153,8 +184,8 @@ $(document).ready(function () {
                 var cardContentChild = $("<span class='card-title activator grey-text text-darken-4'>" + folio[i].name + "</span>");
                 var cardReveal = $("<div class='card-reveal'></div>");
                 var cardRevealChild1 = $("<span class='card-title grey-text text-darken-4'>" + folio[i].name + "<i class='material-icons right'>close</i></span>");
-                var cardRevealChild2 = $("<p>Github Repository: " + folio[i].repo + "</p>");
-                var cardRevealChild3 = $("<p>Deployed Application: " + folio[i].deployed + "</p>");
+                var cardRevealChild2 = $("<p>Github Repository: <a href=" + "'" + folio[i].repo + "'" + ">" + folio[i].repo + "</a></p>");
+                var cardRevealChild3 = $("<p>Deployed Application: <a href=" + "'" + folio[i].deployed + "'" + ">" + folio[i].deployed + "</a></p>");
     
                 switch (folio[i].type) {
                     case "FE": 
@@ -171,6 +202,8 @@ $(document).ready(function () {
                     break;
                 }
             }
+            // $(".thumbnail").addClass("thumbnailFade");
+            // setTimeout(function () {$(".thumbnail").removeClass("thumbnailFade")}, 100);
         }
 
         sort(portfolio);
@@ -282,7 +315,6 @@ $(document).ready(function () {
         });
     }
 
-
     $(".thumbnail").mouseover(function () {
 
         // PROBLEM WAS THAT WHENEVER I MOUSE OVER A CHILD ELEMENT IT MOUSES OUT.  CHANGED TO MOUSELEAVE, THINGS SEEM GOOD!
@@ -303,6 +335,38 @@ $(document).ready(function () {
             $(this).attr("id", "");
             $(".thumbnail").removeClass("fade");
         })
+    })
+
+    let openModal = function () {
+        $("#modal").modal();
+        $("#modal").modal("open");
+    }
+
+    $("#formSubmit").on("click", function() {
+        event.preventDefault();
+        let toBackEnd = {
+            name: $("#name").val().trim(),
+            email: $("#email").val().trim(),
+            message: $("#message").val().trim()
+        }
+
+        console.log(toBackEnd);
+
+        $.post("/api/message", toBackEnd, function (response, err) {
+            if (response) {
+                console.log(response);
+
+                openModal();
+
+                $("#name").val("");
+                $("#email").val("");
+                $("#message").val("");
+            }
+            else if (err) {
+                throw (err);
+            }
+        });
+        
     })
 
 });
