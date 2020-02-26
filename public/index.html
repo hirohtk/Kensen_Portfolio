@@ -18,12 +18,12 @@
 </head>
 
 <body>
-  <nav>
+  <nav class="scrollspy" id="topOfPage">
     <div class="nav-wrapper  ">
       <!--light-blue darken-4-->
       <a href="#" class="brand-logo topText" id="kensen">Kensen Hirohata</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#about" class="topText">About Me</a></li>
+        <li><a href="#aboutBlock" class="topText">About Me</a></li>
         <li><a href="#portfolio" class="topText">Portfolio</a></li>
         <li><a href="#contact" class="topText">Contact Me</a></li>
       </ul>
@@ -31,10 +31,15 @@
   </nav>
   <div class="container">
 
-    <div>
+
+    <!-- UNCODE WHEN READY - NEED TO HOOK UP TO BACKEND AND ALSO THINK ABOUT PEOPLE SUBMITTING ANONYMOUSLY
+      
+      <div>
       <a class="waves-effect waves-light btn-large" id="commentOpen"><i
           class="material-icons right">comment</i>Comment</a>
-    </div>
+    </div> 
+  
+  -->
 
     <div class="row grey lighten-5 hidden" id="aboutBlock">
       <div class="col s12 m9 l12">
@@ -140,21 +145,19 @@
     <div class="container">
       <div class="row not">
         <div class="col l6 s12">
-          <h5 class="white-text">Footer Content</h5>
-          <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+          <h5 class="white-text">More Information:</h5>
+          <p class="grey-text text-lighten-4"><a href="https://github.com/hirohtk">Github</a></p>
         </div>
         <div class="col l4 offset-l2 s12">
-          <h5 class="white-text">Links</h5>
           <ul>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+            <li><a class="grey-text text-lighten-3" href="#topOfPage">Back to Top</a></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="footer-copyright">
       <div class="container">
-        © 2014 Copyright Text
-        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        © 2020 Copyright 
       </div>
     </div>
   </footer>

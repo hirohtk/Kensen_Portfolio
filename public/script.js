@@ -90,6 +90,13 @@ var portfolio = [
         deployed: "https://thawing-cove-16195.herokuapp.com/",
         type: "FS"
     },
+    {
+        name: "Project - VolunTeam",
+        img: "https://media.giphy.com/media/xUA7b4arnbo3THfzi0/giphy.gif",
+        repo: "https://github.com/ajperkins92/Project-3",
+        deployed: "https://quiet-hamlet-85082.herokuapp.com/",
+        type: "FS"
+    },
 ]
 
 // SORTING:  Can make new objects and push based on date created (need to add field), etc
@@ -125,15 +132,17 @@ $(document).ready(function () {
             var cardRevealChild2 = $("<p>Github Repository: <a href=" + "'" + folio[i].repo + "'" + "target=_blank>" + folio[i].repo + "</a></p>");
             var cardRevealChild3 = $("<p>Deployed Application: <a href=" + "'" + folio[i].deployed + "'" + "target=_blank>" + folio[i].deployed + "</a></p>");
 
-            if (i < 4 || i > 11 && i < 16) {
+            if (i < 5 || i > 12 && i < 17) {
                 $("#col1").append(outerDiv);
                 append();
             }
-            if (i > 3 && i < 8) {
+
+            if (i > 4 && i < 10) {
                 $("#col2").append(outerDiv);
                 append();
             }
-            if (i > 7 && i < 12) {
+
+            if (i > 9 && i < 15) {
                 $("#col3").append(outerDiv);
                 append();
             }

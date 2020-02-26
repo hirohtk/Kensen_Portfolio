@@ -65,7 +65,7 @@ nav {
     background-image: linear-gradient(rgb(63, 191, 241), rgb(75, 158, 253)) !important;
 }
 #kensen {
-    color:black !important;
+    color: rgba(0, 0, 0, 0.8) !important;
     font-family: 'Ibarra Real Nova', serif;
     
 }
