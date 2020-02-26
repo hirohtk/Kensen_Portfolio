@@ -1,5 +1,7 @@
 body {
-    background-image: linear-gradient(white,rgb(63, 191, 241));
+    /* background-image: linear-gradient(white,rgb(63, 191, 241)); */
+    background-image: linear-gradient(white,rgb(131, 215, 248));
+    /* background-image: linear-gradient(rgb(109, 109, 109), rgb(49, 49, 49)) */
 }
 
 #portfolioBlock {
@@ -62,7 +64,8 @@ footer {
 }
 
 nav {
-    background-image: linear-gradient(rgb(63, 191, 241), rgb(75, 158, 253)) !important;
+    /* background-image: linear-gradient(rgb(63, 191, 241), rgb(75, 158, 253)) !important; */
+    background-image: linear-gradient(rgb(176, 213, 255), rgb(93, 169, 255)) !important;
 }
 #kensen {
     color: rgba(0, 0, 0, 0.8) !important;
