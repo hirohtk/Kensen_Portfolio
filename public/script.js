@@ -122,6 +122,7 @@ $(document).ready(function () {
     populate(portfolio);
 
     // SORTING
+
     $("#sortButton").on("click", function () {
         $("#col1").empty();
         $("#col1").append("<h5 class='types'>Front End</h5>");
@@ -282,7 +283,6 @@ $(document).ready(function () {
         });
     }
 
-
     $(".thumbnail").mouseover(function () {
 
         // PROBLEM WAS THAT WHENEVER I MOUSE OVER A CHILD ELEMENT IT MOUSES OUT.  CHANGED TO MOUSELEAVE, THINGS SEEM GOOD!
@@ -303,6 +303,38 @@ $(document).ready(function () {
             $(this).attr("id", "");
             $(".thumbnail").removeClass("fade");
         })
+    })
+
+    let openModal = function () {
+        $("#modal").modal();
+        $("#modal").modal("open");
+    }
+
+    $("#formSubmit").on("click", function() {
+        event.preventDefault();
+        let toBackEnd = {
+            name: $("#name").val().trim(),
+            email: $("#email").val().trim(),
+            message: $("#message").val().trim()
+        }
+
+        console.log(toBackEnd);
+
+        $.post("/api/message", toBackEnd, function (response, err) {
+            if (response) {
+                console.log(response);
+
+                openModal();
+
+                $("#name").val("");
+                $("#email").val("");
+                $("#message").val("");
+            }
+            else if (err) {
+                throw (err);
+            }
+        });
+        
     })
 
 });
