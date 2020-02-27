@@ -65,12 +65,14 @@ footer {
 
 nav {
     /* background-image: linear-gradient(rgb(63, 191, 241), rgb(75, 158, 253)) !important; */
-    background-image: linear-gradient(rgb(176, 213, 255), rgb(93, 169, 255)) !important;
+    background-image: linear-gradient( rgb(93, 169, 255), rgb(176, 213, 255)) !important;
 }
 #kensen {
-    color: rgba(0, 0, 0, 0.8) !important;
-    font-family: 'Ibarra Real Nova', serif;
-    
+    color: black !important;
+    /* font-family: 'Ibarra Real Nova', serif; */
+    /* -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: white; */
+  font-size: 2rem;
 }
 
 .hidden {

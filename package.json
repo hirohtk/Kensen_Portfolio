@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/hirohtk/materialize_with_backend#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.2",
+    "nodemailer": "^6.4.3",
     "nodemon": "^2.0.2"
   }
 }
