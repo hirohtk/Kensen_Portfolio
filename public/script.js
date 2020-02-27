@@ -104,6 +104,14 @@ var portfolio = [
 $(document).ready(function () {
     var ScrollY;
 
+    function recursiveWindow() {
+        if (window.innerWidth <= 600) {
+            console.log(window.innerWidth);
+        }
+    }
+
+    window.onresize = () => recursiveWindow();
+
     $('.scrollspy').scrollSpy();
 
     $("#aboutBlock").addClass("flyInLeft");
