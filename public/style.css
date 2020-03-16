@@ -225,7 +225,8 @@ span {
         width: 250px !important;
         height: 250px !important;
         position:relative;
-        border: 10px solid white
+        border: 10px solid white;
+        margin: 0 auto;
     }
 
     #kensen {
@@ -249,6 +250,10 @@ span {
         width: 90%;
         margin: 0 auto;
         top: -100px
+    }
+
+    .card.horizontal, .card-image {
+        max-width: 100% !important;
     }
     
 }

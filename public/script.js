@@ -161,17 +161,16 @@ $(document).ready(function () {
 
             let ulTag = $("<ul class='collection'></ul>");
             for (let i = 0; i < folio.length; i++) {
-                let linkOrNoLink;
+                let pTag;
                 if (folio[i].deployed === "CLI App - Undeployable") {
-                    linkOrNoLink = "CLI App - Undeployable";
+                    pTag = $("<p>Github Repo: <a href=" + "'" + folio[i].repo + "'" + "target=_blank>Link</a><br>Deployed: CLI App - No Deployment</p>")
                 }
                 else {
-                    linkOrNoLink = "Link";
+                    pTag = $("<p>Github Repo: <a href=" + "'" + folio[i].repo + "'" + "target=_blank>Link</a><br>Deployed: <a href=" + "'" + folio[i].deployed + "'" + "target=_blank>Link</a></p>")
                 }
                 let liTag = $("<li class='collection-item avatar'></li>");
                 let imgTag = $("<img src='" + folio[i].img + "' alt='' class='circle'>")
                 let spanTag = $("<span class='title'> <b>" + folio[i].name + "</b> </span>")
-                let pTag = $("<p>Github Repo: <a href=" + "'" + folio[i].repo + "'" + "target=_blank>Link</a><br>Deployed: <a href=" + "'" + folio[i].deployed + "'" + "target=_blank>" + linkOrNoLink+ "</a></p>")
                 liTag.append(imgTag, spanTag, pTag);
                 ulTag.append(liTag)
             }
