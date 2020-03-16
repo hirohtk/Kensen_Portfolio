@@ -104,9 +104,35 @@ var portfolio = [
 $(document).ready(function () {
     var ScrollY;
 
+    var screenSize;
+
+    // initial screensize
+    if (window.innerWidth >= 901) {
+        screenSize = "large";
+    }
+    else {
+        screenSize = "small"
+    }
+    console.log(screenSize);
+
     function recursiveWindow() {
-        if (window.innerWidth <= 600) {
-            console.log(window.innerWidth);
+        if (window.innerWidth >= 901 && screenSize === "small") {
+            screenSize = "large";
+            $("#col1").empty();
+            $("#col2").empty();
+            $("#col3").empty();
+            $(".collection").remove();
+            console.log("going large")
+            populate(portfolio);
+        }
+        else if (window.innerWidth <= 900 && screenSize === "large") {
+            screenSize = "small";
+            $("#col1").empty();
+            $("#col2").empty();
+            $("#col3").empty();
+            $(".collection").remove();
+            console.log("going small")
+            populate(portfolio);
         }
     }
 
@@ -156,9 +182,30 @@ $(document).ready(function () {
                     append();
                 }
             }
-        }
-        else {
 
+            $(".thumbnail").mouseover(function () {
+
+                // PROBLEM WAS THAT WHENEVER I MOUSE OVER A CHILD ELEMENT IT MOUSES OUT.  CHANGED TO MOUSELEAVE, THINGS SEEM GOOD!
+
+                $(".thumbnail").removeClass("brighten");
+                $(this).addClass("scaleup");
+                $(this).attr("id", "immune");
+                $(".thumbnail:not(#immune)").addClass("fade");
+
+                $(this).mouseleave(function () {
+                    //$(this).addClass("deflate");
+                    $(".thumbnail").addClass("brighten");
+                    $(this).removeClass("scaleup");
+                    // function deflate() {
+                    //     $(".deflate").removeClass("deflate")
+                    // }
+                    // setTimeout(deflate, 500);
+                    $(this).attr("id", "");
+                    $(".thumbnail").removeClass("fade");
+                })
+            })
+        }
+        else if (window.innerWidth <= 900) {
             let ulTag = $("<ul class='collection'></ul>");
             for (let i = 0; i < folio.length; i++) {
                 let pTag;
