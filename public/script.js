@@ -118,43 +118,66 @@ $(document).ready(function () {
 
     function populate(folio) {
 
-        function append() {
-            outerDiv.append(cardImage);
-            cardImage.append(cardImageChild);
-            outerDiv.append(cardContent);
-            cardContent.append(cardContentChild);
-            outerDiv.append(cardReveal);
-            cardReveal.append(cardRevealChild1);
-            cardReveal.append(cardRevealChild2);
-            cardReveal.append(cardRevealChild3);
+        if (window.innerWidth >= 901) {
+            function append() {
+                outerDiv.append(cardImage);
+                cardImage.append(cardImageChild);
+                outerDiv.append(cardContent);
+                cardContent.append(cardContentChild);
+                outerDiv.append(cardReveal);
+                cardReveal.append(cardRevealChild1);
+                cardReveal.append(cardRevealChild2);
+                cardReveal.append(cardRevealChild3);
+            }
+
+            for (let i = 0; i < folio.length; i++) {
+                var outerDiv = $("<div class='card thumbnail'></div>");
+                var cardImage = $("<div class='card-image waves-effect waves-block waves-light'></div>");
+                var cardImageChild = $("<img class='activator' src='" + folio[i].img + "'>");
+                var cardContent = $("<div class='card-content'></div>");
+                var cardContentChild = $("<span class='card-title activator grey-text text-darken-4'>" + folio[i].name + "</span>");
+                var cardReveal = $("<div class='card-reveal'></div>");
+                var cardRevealChild1 = $("<span class='card-title grey-text text-darken-4'>" + folio[i].name + "<i class='material-icons right'>close</i></span>");
+                var cardRevealChild2 = $("<p>Github Repository: <a href=" + "'" + folio[i].repo + "'" + "target=_blank>" + folio[i].repo + "</a></p>");
+                var cardRevealChild3 = $("<p>Deployed Application: <a href=" + "'" + folio[i].deployed + "'" + "target=_blank>" + folio[i].deployed + "</a></p>");
+
+                if (i < 5 || i > 12 && i < 17) {
+                    $("#col1").append(outerDiv);
+                    append();
+                }
+
+                if (i > 4 && i < 10) {
+                    $("#col2").append(outerDiv);
+                    append();
+                }
+
+                if (i > 9 && i < 15) {
+                    $("#col3").append(outerDiv);
+                    append();
+                }
+            }
+        }
+        else {
+
+            let ulTag = $("<ul class='collection'></ul>");
+            for (let i = 0; i < folio.length; i++) {
+                let linkOrNoLink;
+                if (folio[i].deployed === "CLI App - Undeployable") {
+                    linkOrNoLink = "CLI App - Undeployable";
+                }
+                else {
+                    linkOrNoLink = "Link";
+                }
+                let liTag = $("<li class='collection-item avatar'></li>");
+                let imgTag = $("<img src='" + folio[i].img + "' alt='' class='circle'>")
+                let spanTag = $("<span class='title'> <b>" + folio[i].name + "</b> </span>")
+                let pTag = $("<p>Github Repo: <a href=" + "'" + folio[i].repo + "'" + "target=_blank>Link</a><br>Deployed: <a href=" + "'" + folio[i].deployed + "'" + "target=_blank>" + linkOrNoLink+ "</a></p>")
+                liTag.append(imgTag, spanTag, pTag);
+                ulTag.append(liTag)
+            }
+            $("#portfolioBlock").append(ulTag);
         }
 
-        for (i = 0; i < folio.length; i++) {
-            var outerDiv = $("<div class='card thumbnail'></div>");
-            var cardImage = $("<div class='card-image waves-effect waves-block waves-light'></div>");
-            var cardImageChild = $("<img class='activator' src='" + folio[i].img + "'>");
-            var cardContent = $("<div class='card-content'></div>");
-            var cardContentChild = $("<span class='card-title activator grey-text text-darken-4'>" + folio[i].name + "</span>");
-            var cardReveal = $("<div class='card-reveal'></div>");
-            var cardRevealChild1 = $("<span class='card-title grey-text text-darken-4'>" + folio[i].name + "<i class='material-icons right'>close</i></span>");
-            var cardRevealChild2 = $("<p>Github Repository: <a href=" + "'" + folio[i].repo + "'" + "target=_blank>" + folio[i].repo + "</a></p>");
-            var cardRevealChild3 = $("<p>Deployed Application: <a href=" + "'" + folio[i].deployed + "'" + "target=_blank>" + folio[i].deployed + "</a></p>");
-
-            if (i < 5 || i > 12 && i < 17) {
-                $("#col1").append(outerDiv);
-                append();
-            }
-
-            if (i > 4 && i < 10) {
-                $("#col2").append(outerDiv);
-                append();
-            }
-
-            if (i > 9 && i < 15) {
-                $("#col3").append(outerDiv);
-                append();
-            }
-        }
     }
 
     populate(portfolio);
@@ -183,7 +206,7 @@ $(document).ready(function () {
                 cardReveal.append(cardRevealChild2);
                 cardReveal.append(cardRevealChild3);
             }
-    
+
             for (i = 0; i < folio.length; i++) {
                 var outerDiv = $("<div class='card thumbnail'></div>");
                 var cardImage = $("<div class='card-image waves-effect waves-block waves-light'></div>");
@@ -194,20 +217,20 @@ $(document).ready(function () {
                 var cardRevealChild1 = $("<span class='card-title grey-text text-darken-4'>" + folio[i].name + "<i class='material-icons right'>close</i></span>");
                 var cardRevealChild2 = $("<p>Github Repository: <a href=" + "'" + folio[i].repo + "'" + ">" + folio[i].repo + "</a></p>");
                 var cardRevealChild3 = $("<p>Deployed Application: <a href=" + "'" + folio[i].deployed + "'" + ">" + folio[i].deployed + "</a></p>");
-    
+
                 switch (folio[i].type) {
-                    case "FE": 
-                    $("#col1").append(outerDiv);
-                    append();
-                    break;
-                    case "BE": 
-                    $("#col2").append(outerDiv);
-                    append();
-                    break;
-                    case "FS": 
-                    $("#col3").append(outerDiv);
-                    append();
-                    break;
+                    case "FE":
+                        $("#col1").append(outerDiv);
+                        append();
+                        break;
+                    case "BE":
+                        $("#col2").append(outerDiv);
+                        append();
+                        break;
+                    case "FS":
+                        $("#col3").append(outerDiv);
+                        append();
+                        break;
                 }
             }
             // $(".thumbnail").addClass("thumbnailFade");
@@ -356,7 +379,7 @@ $(document).ready(function () {
         $("#modal").modal("open");
     }
 
-    $("#formSubmit").on("click", function() {
+    $("#formSubmit").on("click", function () {
         event.preventDefault();
         let toBackEnd = {
             name: $("#name").val().trim(),
@@ -380,7 +403,7 @@ $(document).ready(function () {
                 throw (err);
             }
         });
-        
+
     })
 
 });
