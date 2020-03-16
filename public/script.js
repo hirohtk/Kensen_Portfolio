@@ -104,49 +104,126 @@ var portfolio = [
 $(document).ready(function () {
     var ScrollY;
 
+    var screenSize;
+
+    // initial screensize
+    if (window.innerWidth >= 901) {
+        screenSize = "large";
+    }
+    else {
+        screenSize = "small"
+    }
+    console.log(screenSize);
+
+    function recursiveWindow() {
+        if (window.innerWidth >= 901 && screenSize === "small") {
+            screenSize = "large";
+            $("#col1").empty();
+            $("#col2").empty();
+            $("#col3").empty();
+            $(".collection").remove();
+            console.log("going large")
+            populate(portfolio);
+        }
+        else if (window.innerWidth <= 900 && screenSize === "large") {
+            screenSize = "small";
+            $("#col1").empty();
+            $("#col2").empty();
+            $("#col3").empty();
+            $(".collection").remove();
+            console.log("going small")
+            populate(portfolio);
+        }
+    }
+
+    window.onresize = () => recursiveWindow();
+
     $('.scrollspy').scrollSpy();
 
     $("#aboutBlock").addClass("flyInLeft");
 
     function populate(folio) {
 
-        function append() {
-            outerDiv.append(cardImage);
-            cardImage.append(cardImageChild);
-            outerDiv.append(cardContent);
-            cardContent.append(cardContentChild);
-            outerDiv.append(cardReveal);
-            cardReveal.append(cardRevealChild1);
-            cardReveal.append(cardRevealChild2);
-            cardReveal.append(cardRevealChild3);
+        if (window.innerWidth >= 901) {
+            function append() {
+                outerDiv.append(cardImage);
+                cardImage.append(cardImageChild);
+                outerDiv.append(cardContent);
+                cardContent.append(cardContentChild);
+                outerDiv.append(cardReveal);
+                cardReveal.append(cardRevealChild1);
+                cardReveal.append(cardRevealChild2);
+                cardReveal.append(cardRevealChild3);
+            }
+
+            for (let i = 0; i < folio.length; i++) {
+                var outerDiv = $("<div class='card thumbnail'></div>");
+                var cardImage = $("<div class='card-image waves-effect waves-block waves-light'></div>");
+                var cardImageChild = $("<img class='activator' src='" + folio[i].img + "'>");
+                var cardContent = $("<div class='card-content'></div>");
+                var cardContentChild = $("<span class='card-title activator grey-text text-darken-4'>" + folio[i].name + "</span>");
+                var cardReveal = $("<div class='card-reveal'></div>");
+                var cardRevealChild1 = $("<span class='card-title grey-text text-darken-4'>" + folio[i].name + "<i class='material-icons right'>close</i></span>");
+                var cardRevealChild2 = $("<p>Github Repository: <a href=" + "'" + folio[i].repo + "'" + "target=_blank>" + folio[i].repo + "</a></p>");
+                var cardRevealChild3 = $("<p>Deployed Application: <a href=" + "'" + folio[i].deployed + "'" + "target=_blank>" + folio[i].deployed + "</a></p>");
+
+                if (i < 5 || i > 12 && i < 17) {
+                    $("#col1").append(outerDiv);
+                    append();
+                }
+
+                if (i > 4 && i < 10) {
+                    $("#col2").append(outerDiv);
+                    append();
+                }
+
+                if (i > 9 && i < 15) {
+                    $("#col3").append(outerDiv);
+                    append();
+                }
+            }
+
+            $(".thumbnail").mouseover(function () {
+
+                // PROBLEM WAS THAT WHENEVER I MOUSE OVER A CHILD ELEMENT IT MOUSES OUT.  CHANGED TO MOUSELEAVE, THINGS SEEM GOOD!
+
+                $(".thumbnail").removeClass("brighten");
+                $(this).addClass("scaleup");
+                $(this).attr("id", "immune");
+                $(".thumbnail:not(#immune)").addClass("fade");
+
+                $(this).mouseleave(function () {
+                    //$(this).addClass("deflate");
+                    $(".thumbnail").addClass("brighten");
+                    $(this).removeClass("scaleup");
+                    // function deflate() {
+                    //     $(".deflate").removeClass("deflate")
+                    // }
+                    // setTimeout(deflate, 500);
+                    $(this).attr("id", "");
+                    $(".thumbnail").removeClass("fade");
+                })
+            })
+        }
+        else if (window.innerWidth <= 900) {
+            let ulTag = $("<ul class='collection'></ul>");
+            for (let i = 0; i < folio.length; i++) {
+                let pTag;
+                if (folio[i].deployed === "CLI App - Undeployable") {
+                    pTag = $("<p>Github Repo: <a href=" + "'" + folio[i].repo + "'" + "target=_blank>Link</a><br>Deployed: CLI App - No Deployment</p>")
+                }
+                else {
+                    pTag = $("<p>Github Repo: <a href=" + "'" + folio[i].repo + "'" + "target=_blank>Link</a><br>Deployed: <a href=" + "'" + folio[i].deployed + "'" + "target=_blank>Link</a></p>")
+                }
+                let liTag = $("<li class='collection-item avatar'></li>");
+                let imgTag = $("<img src='" + folio[i].img + "' alt='' class='circle'>")
+                let spanTag = $("<span class='title'> <b>" + folio[i].name + "</b> </span>")
+                liTag.append(imgTag, spanTag, pTag);
+                ulTag.append(liTag)
+            }
+            $("#portfolioBlock").append(ulTag);
         }
 
-        for (i = 0; i < folio.length; i++) {
-            var outerDiv = $("<div class='card thumbnail'></div>");
-            var cardImage = $("<div class='card-image waves-effect waves-block waves-light'></div>");
-            var cardImageChild = $("<img class='activator' src='" + folio[i].img + "'>");
-            var cardContent = $("<div class='card-content'></div>");
-            var cardContentChild = $("<span class='card-title activator grey-text text-darken-4'>" + folio[i].name + "</span>");
-            var cardReveal = $("<div class='card-reveal'></div>");
-            var cardRevealChild1 = $("<span class='card-title grey-text text-darken-4'>" + folio[i].name + "<i class='material-icons right'>close</i></span>");
-            var cardRevealChild2 = $("<p>Github Repository: <a href=" + "'" + folio[i].repo + "'" + "target=_blank>" + folio[i].repo + "</a></p>");
-            var cardRevealChild3 = $("<p>Deployed Application: <a href=" + "'" + folio[i].deployed + "'" + "target=_blank>" + folio[i].deployed + "</a></p>");
-
-            if (i < 5 || i > 12 && i < 17) {
-                $("#col1").append(outerDiv);
-                append();
-            }
-
-            if (i > 4 && i < 10) {
-                $("#col2").append(outerDiv);
-                append();
-            }
-
-            if (i > 9 && i < 15) {
-                $("#col3").append(outerDiv);
-                append();
-            }
-        }
     }
 
     populate(portfolio);
@@ -175,7 +252,7 @@ $(document).ready(function () {
                 cardReveal.append(cardRevealChild2);
                 cardReveal.append(cardRevealChild3);
             }
-    
+
             for (i = 0; i < folio.length; i++) {
                 var outerDiv = $("<div class='card thumbnail'></div>");
                 var cardImage = $("<div class='card-image waves-effect waves-block waves-light'></div>");
@@ -186,20 +263,20 @@ $(document).ready(function () {
                 var cardRevealChild1 = $("<span class='card-title grey-text text-darken-4'>" + folio[i].name + "<i class='material-icons right'>close</i></span>");
                 var cardRevealChild2 = $("<p>Github Repository: <a href=" + "'" + folio[i].repo + "'" + ">" + folio[i].repo + "</a></p>");
                 var cardRevealChild3 = $("<p>Deployed Application: <a href=" + "'" + folio[i].deployed + "'" + ">" + folio[i].deployed + "</a></p>");
-    
+
                 switch (folio[i].type) {
-                    case "FE": 
-                    $("#col1").append(outerDiv);
-                    append();
-                    break;
-                    case "BE": 
-                    $("#col2").append(outerDiv);
-                    append();
-                    break;
-                    case "FS": 
-                    $("#col3").append(outerDiv);
-                    append();
-                    break;
+                    case "FE":
+                        $("#col1").append(outerDiv);
+                        append();
+                        break;
+                    case "BE":
+                        $("#col2").append(outerDiv);
+                        append();
+                        break;
+                    case "FS":
+                        $("#col3").append(outerDiv);
+                        append();
+                        break;
                 }
             }
             // $(".thumbnail").addClass("thumbnailFade");
@@ -209,34 +286,40 @@ $(document).ready(function () {
         sort(portfolio);
 
         // Repeating listener - sorter function above wipes out the existing listener
-        $(".thumbnail").mouseover(function () {
-            $(".thumbnail").removeClass("brighten");
-            $(this).addClass("enlarge");
-            $(this).attr("id", "immune");
-            $(".thumbnail:not(#immune)").addClass("fade");
-    
-            $(this).mouseleave(function () {
-                //$(this).addClass("deflate");
-                $(".thumbnail").addClass("brighten");
-                $(this).removeClass("enlarge");
-                // function deflate() {
-                //     $(".deflate").removeClass("deflate")
-                // }
-                // setTimeout(deflate, 500);
-                $(this).attr("id", "");
-                $(".thumbnail").removeClass("fade");
-            })
+        $(".thumbnail").removeClass("brighten");
+        $(this).addClass("scaleup");
+        $(this).attr("id", "immune");
+        $(".thumbnail:not(#immune)").addClass("fade");
+
+        $(this).mouseleave(function () {
+            //$(this).addClass("deflate");
+            $(".thumbnail").addClass("brighten");
+            $(this).removeClass("scaleup");
+            // function deflate() {
+            //     $(".deflate").removeClass("deflate")
+            // }
+            // setTimeout(deflate, 500);
+            $(this).attr("id", "");
+            $(".thumbnail").removeClass("fade");
         })
     });
 
-    // SORTING
+    // END SORTING
 
     $(document).scroll(function () {
         ScrollY = $(this).scrollTop();
-        if (ScrollY > 200) {
+        // simulating media query for when blocks "fly in"
+        if (window.innerWidth <= 600 && ScrollY > 100) {
             $("#portfolioBlock").addClass("flyInRight");
         }
-        if (ScrollY > 1700) {
+        else if (ScrollY > 200) {
+            $("#portfolioBlock").addClass("flyInRight");
+        }
+        // simulating media query for when blocks "fly in"
+        if (window.innerWidth <= 600 && ScrollY > 1000) {
+            $("#contactBlock").addClass("flyInLeft");
+        }
+        else if (ScrollY > 1700) {
             $("#contactBlock").addClass("flyInLeft");
         }
     });
@@ -320,14 +403,14 @@ $(document).ready(function () {
         // PROBLEM WAS THAT WHENEVER I MOUSE OVER A CHILD ELEMENT IT MOUSES OUT.  CHANGED TO MOUSELEAVE, THINGS SEEM GOOD!
 
         $(".thumbnail").removeClass("brighten");
-        $(this).addClass("enlarge");
+        $(this).addClass("scaleup");
         $(this).attr("id", "immune");
         $(".thumbnail:not(#immune)").addClass("fade");
 
         $(this).mouseleave(function () {
             //$(this).addClass("deflate");
             $(".thumbnail").addClass("brighten");
-            $(this).removeClass("enlarge");
+            $(this).removeClass("scaleup");
             // function deflate() {
             //     $(".deflate").removeClass("deflate")
             // }
@@ -342,7 +425,7 @@ $(document).ready(function () {
         $("#modal").modal("open");
     }
 
-    $("#formSubmit").on("click", function() {
+    $("#formSubmit").on("click", function () {
         event.preventDefault();
         let toBackEnd = {
             name: $("#name").val().trim(),
@@ -366,7 +449,7 @@ $(document).ready(function () {
                 throw (err);
             }
         });
-        
+
     })
 
 });
