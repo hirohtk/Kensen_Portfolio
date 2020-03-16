@@ -16,7 +16,6 @@ body {
 .types {
     position: relative;
     top: -7rem;
-    left: 7rem;
 }
 
 #col1, #col2, #col3 {
@@ -161,6 +160,11 @@ span {
     border: 1px solid gray
 }
 
+.smallerTitles {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+}
+
 @media only screen and (max-width: 900px) {
 
     .hasSmallScreen {
@@ -255,6 +259,8 @@ span {
     .card.horizontal, .card-image {
         max-width: 100% !important;
     }
+
+    
     
 }
 
@@ -288,7 +294,7 @@ span {
     
     #col1, #col2, #col3 {
         position: relative;
-        left: 2rem;
+        left: 4rem;
     }
     
     @-webkit-keyframes fade {
@@ -382,7 +388,7 @@ span {
     
     #col1, #col2, #col3 {
         position: relative;
-        left:2rem;
+        left: 3rem;
     }
 
     #portfolioRow {
