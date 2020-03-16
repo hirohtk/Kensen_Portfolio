@@ -187,12 +187,19 @@ span {
         margin-top: 20px;
     }
 
+    #kensen {
+        font-size: 1.5rem;
+        width: 100%;
+        
+    }
+
+    .row:not(.not) {
+        margin-top: 2rem !important;
+    }
     
 }
 
 @media only screen and (min-width: 600px) {
-
-   
 
     .thumbnail {
         min-width: 280px;
@@ -340,19 +347,12 @@ span {
     }
 }
 
-
-
 .row:not(.not) {
     margin-top: 15rem;
 }
 
 
-/* 
-
-.circleBase {
-    border-radius: 50%;
-    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
-}
+/*  
 
 #yellow {
     width: 10px;

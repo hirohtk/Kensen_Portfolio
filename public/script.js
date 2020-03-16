@@ -237,14 +237,22 @@ $(document).ready(function () {
         })
     });
 
-    // SORTING
+    // END SORTING
 
     $(document).scroll(function () {
         ScrollY = $(this).scrollTop();
-        if (ScrollY > 200) {
+        // simulating media query for when blocks "fly in"
+        if (window.innerWidth <= 600 && ScrollY > 100) {
             $("#portfolioBlock").addClass("flyInRight");
         }
-        if (ScrollY > 1700) {
+        else if (ScrollY > 200) {
+            $("#portfolioBlock").addClass("flyInRight");
+        }
+        // simulating media query for when blocks "fly in"
+        if (window.innerWidth <= 600 && ScrollY > 1000) {
+            $("#contactBlock").addClass("flyInLeft");
+        }
+        else if (ScrollY > 1700) {
             $("#contactBlock").addClass("flyInLeft");
         }
     });
