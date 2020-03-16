@@ -162,7 +162,7 @@ $(document).ready(function () {
                 cardImage.append(cardImageChild);
                 cardContent.append(cardContentChild);
                 outerDiv.append(cardImage, cardContent, cardReveal);
-                cardReveal.append(cardRevealChild1, cardRevealChild2, cardRevealChild3);
+                cardReveal.append(cardRevealChild1, pTag);
             }
 
             for (let i = 0; i < folio.length; i++) {
@@ -173,9 +173,13 @@ $(document).ready(function () {
                 var cardContentChild = $("<span class='card-title activator grey-text text-darken-4 smallerTitles'>" + folio[i].name + "</span>");
                 var cardReveal = $("<div class='card-reveal'></div>");
                 var cardRevealChild1 = $("<span class='card-title grey-text text-darken-4 smallerTitles'>" + folio[i].name + "<i class='material-icons right'>close</i></span>");
-                var cardRevealChild2 = $("<p>Github Repository: <a href=" + "'" + folio[i].repo + "'" + "target=_blank>" + folio[i].repo + "</a></p>");
-                var cardRevealChild3 = $("<p>Deployed Application: <a href=" + "'" + folio[i].deployed + "'" + "target=_blank>" + folio[i].deployed + "</a></p>");
-
+                var pTag;
+                if (folio[i].deployed === "CLI App - Undeployable") {
+                    pTag = $("<p>Github Repo: <a href=" + "'" + folio[i].repo + "'" + "target=_blank>Link</a><br>Deployed: CLI App - No Deployment</p>")
+                }
+                else {
+                    pTag = $("<p>Github Repo: <a href=" + "'" + folio[i].repo + "'" + "target=_blank>Link</a><br>Deployed: <a href=" + "'" + folio[i].deployed + "'" + "target=_blank>Link</a></p>")
+                }
                 if (i < 5 || i > 12 && i < 17) {
                     $("#col1").append(outerDiv);
                     append();
