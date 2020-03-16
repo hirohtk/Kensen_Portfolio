@@ -209,7 +209,7 @@ span {
 
 @media only screen and (max-width: 2000px) {
     .thumbnail {
-        min-width: 280px;
+        width: 280px;
         height: 280px;
         position: relative;
         bottom: 80px;
@@ -235,6 +235,10 @@ span {
         filter: brightness(100%);
     }
     
+    #col1, #col2, #col3 {
+        position: relative;
+        left: 2rem;
+    }
     
     @-webkit-keyframes fade {
         0% {
@@ -256,28 +260,6 @@ span {
         }
     }
     
-    .enlarge {
-        -webkit-animation: enlarge 0.5s;
-        width: 310px;
-        height: 310px;
-        -webkit-transform: translate(-10px, -15px);
-    }
-    
-    @-webkit-keyframes enlarge {
-        0% {
-          width: 280px;
-          height: 280px;
-          -webkit-transform: translate(0, 0px);
-        }
-    
-        100% {
-            width: 310px;
-            height: 310px;
-          -webkit-transform: translate(-10px, -15px);
-        }
-    }
-    
-    
     .scaleup {
         -webkit-animation: scaleup 0.5s;
         transform: scale(1.1, 1.1);
@@ -293,43 +275,7 @@ span {
            transform: scale(1.1, 1.1);
         }
     }
-    
-    @-webkit-keyframes deflate {
-        0% {
-            -webkit-transform: translate(-10px, -10px);
-          
-        }
-    
-        100% {
-            width: 280px;
-            height: 280px;
-            -webkit-transform: translate(0, 0px);
-        }
-    }
-    
-    @-webkit-keyframes test {
-        0% {
-          opacity: 1;
-      
-          -webkit-transform: translate(0, 0px);
-        }
-        30% {
-          
-          
-        }
-        50% {
-        }
-        75% {
-      
-          
-        }
-        100% {
-          opacity: 0.8;
-            
-          -webkit-transform: translate(600px, 0px);
-        }
-    }
-    
+     
     .thumbnailFade {
         -webkit-animation: thumbnailFade 1s;
         opacity: 1;
@@ -357,7 +303,7 @@ span {
 @media only screen and (max-width: 1680px) {
 
     .thumbnail {
-        min-width: 200px;
+        width: 280px;
         height: 280px;
         position: relative;
         bottom: 80px;
@@ -368,7 +314,7 @@ span {
     
     .deflate {
         -webkit-animation: deflate 0.5s;
-        width: 200px;
+        width: 280px;
         height: 280px;
         -webkit-transform: translate(0px, 0px);
     }
@@ -383,6 +329,14 @@ span {
         filter: brightness(100%);
     }
     
+    #col1, #col2, #col3 {
+        position: relative;
+        left:2rem;
+    }
+
+    #portfolioRow {
+        /* width:120% !important; */
+    }
     
     @-webkit-keyframes fade {
         0% {
@@ -403,27 +357,7 @@ span {
             filter: brightness(100%);
         }
     }
-    
-    .enlarge {
-        -webkit-animation: enlarge 0.5s;
-        width: 310px;
-        height: 310px;
-        -webkit-transform: translate(-10px, -15px);
-    }
-    
-    @-webkit-keyframes enlarge {
-        0% {
-          width: 200px;
-          height: 280px;
-          -webkit-transform: translate(0, 0px);
-        }
-    
-        100% {
-            width: 310px;
-            height: 310px;
-          -webkit-transform: translate(-10px, -15px);
-        }
-    }
+
     
     
     .scaleup {
@@ -442,41 +376,6 @@ span {
         }
     }
     
-    @-webkit-keyframes deflate {
-        0% {
-            -webkit-transform: translate(-10px, -10px);
-          
-        }
-    
-        100% {
-            width: 200px;
-            height: 280px;
-            -webkit-transform: translate(0, 0px);
-        }
-    }
-    
-    @-webkit-keyframes test {
-        0% {
-          opacity: 1;
-      
-          -webkit-transform: translate(0, 0px);
-        }
-        30% {
-          
-          
-        }
-        50% {
-        }
-        75% {
-      
-          
-        }
-        100% {
-          opacity: 0.8;
-            
-          -webkit-transform: translate(600px, 0px);
-        }
-    }
     
     .thumbnailFade {
         -webkit-animation: thumbnailFade 1s;
@@ -506,7 +405,217 @@ span {
     margin-top: 15rem;
 }
 
+@media only screen and (max-width: 1480px) {
 
+    .thumbnail {
+        width: 230px;
+        height: 280px;
+        position: relative;
+        bottom: 80px;
+        border-style: hidden;
+        border-width: 20px;
+        margin-bottom: 30px;
+        
+    }
+    
+    .deflate {
+        -webkit-animation: deflate 0.5s;
+        width: 230px;
+        height: 280px;
+        -webkit-transform: translate(0px, 0px);
+    }
+    
+    .fade {
+        -webkit-animation: fade 0.5s;
+        filter: brightness(80%);
+    }
+    
+    .brighten{
+        -webkit-animation: brighten 1s;
+        filter: brightness(100%);
+    }
+    
+    #col1, #col2, #col3 {
+        position: relative;
+        left:2rem !important;
+    }
+
+    #portfolioRow {
+        /* width:130% !important; */
+    }
+    
+    @-webkit-keyframes fade {
+        0% {
+            filter: brightness(100%);
+        }
+    
+        100% {
+            filter: brightness(80%);
+        }
+    }
+    
+    @-webkit-keyframes brighten {
+        0% {
+            filter: brightness(80%)
+        }
+    
+        100% {
+            filter: brightness(100%);
+        }
+    }
+
+    
+    
+    .scaleup {
+        -webkit-animation: scaleup 0.5s;
+        transform: scale(1.1, 1.1);
+    }
+    
+    @-webkit-keyframes scaleup {
+        0% {
+          
+          transform: scale(1, 1);
+        }
+    
+        100% {
+           transform: scale(1.1, 1.1);
+        }
+    }
+    
+    
+    .thumbnailFade {
+        -webkit-animation: thumbnailFade 1s;
+        opacity: 1;
+    }
+    
+    @-webkit-keyframes thumbnailFade {
+        0% {
+            opacity: 0;
+    
+        }
+        100% {
+    
+            opacity: 1;
+        }
+    }
+    
+    #myImage {
+        width: 250px !important;
+        height: 250px !important;
+        position:relative;
+        border: 10px solid white
+    }
+}
+
+.row:not(.not) {
+    margin-top: 15rem;
+}
+
+@media only screen and (max-width: 1140px) {
+
+    .thumbnail {
+        width: 200px;
+        height: 280px;
+        position: relative;
+        bottom: 80px;
+        border-style: hidden;
+        border-width: 20px;
+        margin-bottom: 30px;
+        margin-right: 30px !important;
+    }
+    
+    .deflate {
+        -webkit-animation: deflate 0.5s;
+        width: 200px;
+        height: 280px;
+        -webkit-transform: translate(0px, 0px);
+    }
+    
+    .fade {
+        -webkit-animation: fade 0.5s;
+        filter: brightness(80%);
+    }
+    
+    .brighten{
+        -webkit-animation: brighten 1s;
+        filter: brightness(100%);
+    }
+    
+    #col1, #col2, #col3 {
+        position: relative;
+        left:-0.5rem ;
+    }
+
+    #portfolioRow {
+        /* width:140% !important; */
+    }
+    
+    @-webkit-keyframes fade {
+        0% {
+            filter: brightness(100%);
+        }
+    
+        100% {
+            filter: brightness(80%);
+        }
+    }
+    
+    @-webkit-keyframes brighten {
+        0% {
+            filter: brightness(80%)
+        }
+    
+        100% {
+            filter: brightness(100%);
+        }
+    }
+
+    
+    
+    .scaleup {
+        -webkit-animation: scaleup 0.5s;
+        transform: scale(1.1, 1.1);
+    }
+    
+    @-webkit-keyframes scaleup {
+        0% {
+          
+          transform: scale(1, 1);
+        }
+    
+        100% {
+           transform: scale(1.1, 1.1);
+        }
+    }
+    
+    
+    .thumbnailFade {
+        -webkit-animation: thumbnailFade 1s;
+        opacity: 1;
+    }
+    
+    @-webkit-keyframes thumbnailFade {
+        0% {
+            opacity: 0;
+    
+        }
+        100% {
+    
+            opacity: 1;
+        }
+    }
+    
+    #myImage {
+        width: 250px !important;
+        height: 250px !important;
+        position:relative;
+        border: 10px solid white
+    }
+}
+
+.row:not(.not) {
+    margin-top: 15rem;
+}
 /*  
 
 #yellow {
