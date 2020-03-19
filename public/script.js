@@ -206,13 +206,15 @@ $(document).ready(function () {
                 $(".thumbnail:not(#immune)").addClass("fade");
 
                 $(this).mouseleave(function () {
-                    //$(this).addClass("deflate");
-                    $(".thumbnail").addClass("brighten");
+                    if ($(".thumbnail").hasClass("brighten")) {
+                        // if thumbnail is already brightening, don't do it again (don't repeat animation)
+                        console.log("already has class")
+                    }
+                    else {
+                        $(`.thumbnail:not(#immune)`).addClass("brighten");
+                        console.log("adding class")
+                    }
                     $(this).removeClass("scaleup");
-                    // function deflate() {
-                    //     $(".deflate").removeClass("deflate")
-                    // }
-                    // setTimeout(deflate, 500);
                     $(this).attr("id", "");
                     $(".thumbnail").removeClass("fade");
                 })
@@ -309,13 +311,13 @@ $(document).ready(function () {
             $(".thumbnail:not(#immune)").addClass("fade");
 
             $(this).mouseleave(function () {
-                //$(this).addClass("deflate");
-                $(".thumbnail").addClass("brighten");
+                if ($(".thumbnail").hasClass("brighten")) {
+                    // if thumbnail is already brightening, don't do it again (don't repeat animation)
+                }
+                else {
+                    $(".thumbnail").addClass("brighten");
+                }
                 $(this).removeClass("scaleup");
-                // function deflate() {
-                //     $(".deflate").removeClass("deflate")
-                // }
-                // setTimeout(deflate, 500);
                 $(this).attr("id", "");
                 $(".thumbnail").removeClass("fade");
             })
@@ -426,13 +428,13 @@ $(document).ready(function () {
         $(".thumbnail:not(#immune)").addClass("fade");
 
         $(this).mouseleave(function () {
-            //$(this).addClass("deflate");
-            $(".thumbnail").addClass("brighten");
+            if ($(".thumbnail").hasClass("brighten")) {
+                // if thumbnail is already brightening, don't do it again (don't repeat animation)
+            }
+            else {
+                $(".thumbnail").addClass("brighten");
+            }
             $(this).removeClass("scaleup");
-            // function deflate() {
-            //     $(".deflate").removeClass("deflate")
-            // }
-            // setTimeout(deflate, 500);
             $(this).attr("id", "");
             $(".thumbnail").removeClass("fade");
         })
