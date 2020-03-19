@@ -121,21 +121,61 @@ $(document).ready(function () {
     var screenSize;
 
     var time1;
-    var time2; 
+    var time2;
 
+    var anim = function () {
+
+        $(".thumbnail").mouseover(function () {
+
+            // PROBLEM WAS THAT WHENEVER I MOUSE OVER A CHILD ELEMENT IT MOUSES OUT.  CHANGED TO MOUSELEAVE, THINGS SEEM GOOD!
+
+            $(".thumbnail").removeClass("brighten");
+            $(this).addClass("scaleup");
+            $(this).attr("id", "immune");
+            fadeTrackerB();
+            if (compareTime(time1, time2) === false) {
+                $(".thumbnail:not(#immune)").addClass("fade");
+                console.log("adding regular fade, greater than 1 second elapsed")
+            }
+            else {
+                $(".thumbnail:not(#immune)").addClass("fade2");
+                console.log("adding fade2, less than 1 second elapsed")
+            }
+
+            // ISSUE #1:  when moving over to next card too quickly, the "brighten" is still going
+            //  but at the same time, the fade starts, and fade starts at brightness 100%
+            // need a way to stop the brighten animation if this happens 
+            // if the brighten animation is already going, start fade, but from a point between 100% and 80% rather than
+            // always 100% 
+            $(this).mouseleave(function () {
+                if ($(".thumbnail").hasClass("brighten")) {
+                    // if thumbnail is already brightening, don't do it again (don't repeat animation)
+                }
+                else {
+                    $(".thumbnail:not(#immune)").addClass("brighten");
+                }
+                $(this).removeClass("scaleup");
+                $(this).attr("id", "");
+                $(".thumbnail").removeClass("fade");
+                $(".thumbnail").removeClass("fade2");
+
+                fadeTrackerA();
+            })
+        })
+    }
     // BLOCK THAT HANDLES ISSUE #1
-    function fadeTrackerA () {
+    function fadeTrackerA() {
         //gets the time now
         time1 = new Date().getTime();
         return time1;
     }
 
-    function fadeTrackerB () {
+    function fadeTrackerB() {
         time2 = new Date().getTime();
         return time2;
     }
 
-    function compareTime (began, ended) {
+    function compareTime(began, ended) {
         let difference = ended - began;
         console.log(`start ${began} ended ${ended} difference ${difference}`)
         if (difference <= 1000) {
@@ -157,7 +197,8 @@ $(document).ready(function () {
         screenSize = "small"
     }
 
-    function recursiveWindow() {
+    // forgot that this also is working for me when screen is resized after doing sort!
+    function reRenderWindow() {
         if (window.innerWidth >= 901 && screenSize === "small") {
             screenSize = "large";
             $("#col1").empty();
@@ -178,7 +219,7 @@ $(document).ready(function () {
         }
     }
 
-    window.onresize = () => recursiveWindow();
+    window.onresize = () => reRenderWindow();
 
     $('.scrollspy').scrollSpy();
 
@@ -225,43 +266,7 @@ $(document).ready(function () {
                 }
             }
 
-            $(".thumbnail").mouseover(function () {
-
-                // PROBLEM WAS THAT WHENEVER I MOUSE OVER A CHILD ELEMENT IT MOUSES OUT.  CHANGED TO MOUSELEAVE, THINGS SEEM GOOD!
-
-                $(".thumbnail").removeClass("brighten");
-                $(this).addClass("scaleup");
-                $(this).attr("id", "immune");
-                fadeTrackerB();
-                if (compareTime(time1, time2) === false) {
-                    $(".thumbnail:not(#immune)").addClass("fade");
-                    console.log("adding regular fade, greater than 1 second elapsed")
-                }
-                else {
-                    $(".thumbnail:not(#immune)").addClass("fade2");
-                    console.log("adding regular fade2, less than 1 second elapsed")
-                }
-                
-                // ISSUE #1:  when moving over to next card too quickly, the "brighten" is still going
-                //  but at the same time, the fade starts, and fade starts at brightness 100%
-                // need a way to stop the brighten animation if this happens 
-                // if the brighten animation is already going, start fade, but from a point between 100% and 80% rather than
-                // always 100% 
-                $(this).mouseleave(function () {
-                    if ($(".thumbnail").hasClass("brighten")) {
-                        // if thumbnail is already brightening, don't do it again (don't repeat animation)
-                    }
-                    else {
-                        $(".thumbnail:not(#immune)").addClass("brighten");
-                    }
-                    $(this).removeClass("scaleup");
-                    $(this).attr("id", "");
-                    $(".thumbnail").removeClass("fade");
-                    $(".thumbnail").removeClass("fade2");
-
-                    fadeTrackerA();
-                })
-            })
+            anim();
         }
         else if (window.innerWidth <= 900) {
             let ulTag = $("<ul class='collection'></ul>");
@@ -301,14 +306,10 @@ $(document).ready(function () {
         function sort(folio) {
 
             function append() {
-                outerDiv.append(cardImage);
+                outerDiv.append(cardImage, cardContent, cardReveal);
                 cardImage.append(cardImageChild);
-                outerDiv.append(cardContent);
                 cardContent.append(cardContentChild);
-                outerDiv.append(cardReveal);
-                cardReveal.append(cardRevealChild1);
-                cardReveal.append(cardRevealChild2);
-                cardReveal.append(cardRevealChild3);
+                cardReveal.append(cardRevealChild1, pTag);
             }
 
             for (i = 0; i < folio.length; i++) {
@@ -316,11 +317,16 @@ $(document).ready(function () {
                 var cardImage = $("<div class='card-image waves-effect waves-block waves-light'></div>");
                 var cardImageChild = $("<img class='activator' src='" + folio[i].img + "'>");
                 var cardContent = $("<div class='card-content'></div>");
-                var cardContentChild = $("<span class='card-title activator grey-text text-darken-4'>" + folio[i].name + "</span>");
+                var cardContentChild = $("<span class='card-title activator grey-text text-darken-4 smallerTitles'>" + folio[i].name + "</span>");
                 var cardReveal = $("<div class='card-reveal'></div>");
-                var cardRevealChild1 = $("<span class='card-title grey-text text-darken-4'>" + folio[i].name + "<i class='material-icons right'>close</i></span>");
-                var cardRevealChild2 = $("<p>Github Repository: <a href=" + "'" + folio[i].repo + "'" + ">" + folio[i].repo + "</a></p>");
-                var cardRevealChild3 = $("<p>Deployed Application: <a href=" + "'" + folio[i].deployed + "'" + ">" + folio[i].deployed + "</a></p>");
+                var cardRevealChild1 = $("<span class='card-title grey-text text-darken-4 smallerTitles'>" + folio[i].name + "<i class='material-icons right'>close</i></span>");
+                var pTag;
+                if (folio[i].deployed === "CLI App - Undeployable") {
+                    pTag = $("<p>Github Repo: <a href=" + "'" + folio[i].repo + "'" + "target=_blank>Link</a><br>Deployed: CLI App - No Deployment</p>")
+                }
+                else {
+                    pTag = $("<p>Github Repo: <a href=" + "'" + folio[i].repo + "'" + "target=_blank>Link</a><br>Deployed: <a href=" + "'" + folio[i].deployed + "'" + "target=_blank>Link</a></p>")
+                }
 
                 switch (folio[i].type) {
                     case "FE":
@@ -342,43 +348,7 @@ $(document).ready(function () {
         sort(portfolio);
 
         // Repeating listener - sorter function above wipes out the existing listener
-        $(".thumbnail").mouseover(function () {
-
-            // PROBLEM WAS THAT WHENEVER I MOUSE OVER A CHILD ELEMENT IT MOUSES OUT.  CHANGED TO MOUSELEAVE, THINGS SEEM GOOD!
-
-            $(".thumbnail").removeClass("brighten");
-            $(this).addClass("scaleup");
-            $(this).attr("id", "immune");
-            fadeTrackerB();
-            if (compareTime(time1, time2) === false) {
-                $(".thumbnail:not(#immune)").addClass("fade");
-                console.log("adding regular fade, greater than 1 second elapsed")
-            }
-            else {
-                $(".thumbnail:not(#immune)").addClass("fade2");
-                console.log("adding regular fade2, less than 1 second elapsed")
-            }
-            
-            // ISSUE #1:  when moving over to next card too quickly, the "brighten" is still going
-            //  but at the same time, the fade starts, and fade starts at brightness 100%
-            // need a way to stop the brighten animation if this happens 
-            // if the brighten animation is already going, start fade, but from a point between 100% and 80% rather than
-            // always 100% 
-            $(this).mouseleave(function () {
-                if ($(".thumbnail").hasClass("brighten")) {
-                    // if thumbnail is already brightening, don't do it again (don't repeat animation)
-                }
-                else {
-                    $(".thumbnail:not(#immune)").addClass("brighten");
-                }
-                $(this).removeClass("scaleup");
-                $(this).attr("id", "");
-                $(".thumbnail").removeClass("fade");
-                $(".thumbnail").removeClass("fade2");
-
-                fadeTrackerA();
-            })
-        })
+        anim();
     });
 
     // END SORTING
@@ -400,12 +370,6 @@ $(document).ready(function () {
             $("#contactBlock").addClass("flyInLeft");
         }
     });
-
-    // $(document).on("click", function() { 
-    //     var x = event.clientX;
-    //             var y = event.clientY;
-    //             console.log(x, y);
-    // })
 
     commentBox();
 
@@ -474,44 +438,6 @@ $(document).ready(function () {
 
         });
     }
-
-    $(".thumbnail").mouseover(function () {
-
-        // PROBLEM WAS THAT WHENEVER I MOUSE OVER A CHILD ELEMENT IT MOUSES OUT.  CHANGED TO MOUSELEAVE, THINGS SEEM GOOD!
-
-        $(".thumbnail").removeClass("brighten");
-        $(this).addClass("scaleup");
-        $(this).attr("id", "immune");
-        fadeTrackerB();
-        if (compareTime(time1, time2) === false) {
-            $(".thumbnail:not(#immune)").addClass("fade");
-            console.log("adding regular fade, greater than 1 second elapsed")
-        }
-        else {
-            $(".thumbnail:not(#immune)").addClass("fade2");
-            console.log("adding regular fade2, less than 1 second elapsed")
-        }
-        
-        // ISSUE #1:  when moving over to next card too quickly, the "brighten" is still going
-        //  but at the same time, the fade starts, and fade starts at brightness 100%
-        // need a way to stop the brighten animation if this happens 
-        // if the brighten animation is already going, start fade, but from a point between 100% and 80% rather than
-        // always 100% 
-        $(this).mouseleave(function () {
-            if ($(".thumbnail").hasClass("brighten")) {
-                // if thumbnail is already brightening, don't do it again (don't repeat animation)
-            }
-            else {
-                $(".thumbnail:not(#immune)").addClass("brighten");
-            }
-            $(this).removeClass("scaleup");
-            $(this).attr("id", "");
-            $(".thumbnail").removeClass("fade");
-            $(".thumbnail").removeClass("fade2");
-
-            fadeTrackerA();
-        })
-    })
 
     let openModal = function () {
         $("#modal").modal();
