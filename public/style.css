@@ -565,7 +565,7 @@ span {
 }
 
 
-@media only screen and (max-width: 1140px) {
+@media only screen and (max-width: 1140px)  {
 
     .thumbnail {
         width: 200px;
@@ -597,7 +597,113 @@ span {
     
     #col1, #col2, #col3 {
         position: relative;
-        left:-0.5rem ;
+        left:-3rem ;
+    }
+
+    #portfolioRow {
+        /* width:140% !important; */
+    }
+    
+    @-webkit-keyframes fade {
+        0% {
+            filter: brightness(100%);
+        }
+    
+        100% {
+            filter: brightness(80%);
+        }
+    }
+    
+    @-webkit-keyframes brighten {
+        0% {
+            filter: brightness(80%)
+        }
+    
+        100% {
+            filter: brightness(100%);
+        }
+    }
+
+    
+    
+    .scaleup {
+        -webkit-animation: scaleup 0.5s;
+        transform: scale(1.1, 1.1);
+    }
+    
+    @-webkit-keyframes scaleup {
+        0% {
+          
+          transform: scale(1, 1);
+        }
+    
+        100% {
+           transform: scale(1.1, 1.1);
+        }
+    }
+    
+    
+    .thumbnailFade {
+        -webkit-animation: thumbnailFade 1s;
+        opacity: 1;
+    }
+    
+    @-webkit-keyframes thumbnailFade {
+        0% {
+            opacity: 0;
+    
+        }
+        100% {
+    
+            opacity: 1;
+        }
+    }
+    
+    #myImage {
+        width: 250px !important;
+        height: 250px !important;
+        position:relative;
+        border: 10px solid white
+    }
+}
+
+@media only screen and (max-width: 1040px) and (min-width: 993px) {
+
+    .thumbnail {
+        width: 200px;
+        height: 280px;
+        position: relative;
+        bottom: 80px;
+        border-style: hidden;
+        border-width: 20px;
+        margin-bottom: 30px;
+        margin-right: 30px !important;
+    }
+    
+    .deflate {
+        -webkit-animation: deflate 0.5s;
+        width: 200px;
+        height: 280px;
+        -webkit-transform: translate(0px, 0px);
+    }
+    
+    .fade {
+        -webkit-animation: fade 0.5s;
+        filter: brightness(80%);
+    }
+    
+    .brighten{
+        -webkit-animation: brighten 1s;
+        filter: brightness(100%);
+    }
+    
+    #col1, #col2, #col3 {
+        position: relative;
+        left:-3 rem ;
+    }
+
+    #portfolioBlock, #aboutBlock, #contactBlock {
+        width: 110%;
     }
 
     #portfolioRow {
