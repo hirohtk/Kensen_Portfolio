@@ -305,14 +305,10 @@ $(document).ready(function () {
         function sort(folio) {
 
             function append() {
-                outerDiv.append(cardImage);
+                outerDiv.append(cardImage, cardContent, cardReveal);
                 cardImage.append(cardImageChild);
-                outerDiv.append(cardContent);
                 cardContent.append(cardContentChild);
-                outerDiv.append(cardReveal);
-                cardReveal.append(cardRevealChild1);
-                cardReveal.append(cardRevealChild2);
-                cardReveal.append(cardRevealChild3);
+                cardReveal.append(cardRevealChild1, cardRevealChild2, cardRevealChild3);
             }
 
             for (i = 0; i < folio.length; i++) {
@@ -368,12 +364,6 @@ $(document).ready(function () {
             $("#contactBlock").addClass("flyInLeft");
         }
     });
-
-    // $(document).on("click", function() { 
-    //     var x = event.clientX;
-    //             var y = event.clientY;
-    //             console.log(x, y);
-    // })
 
     commentBox();
 
