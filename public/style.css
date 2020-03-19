@@ -275,78 +275,9 @@ span {
         margin-bottom: 30px;
     }
     
-    .deflate {
-        -webkit-animation: deflate 0.5s;
-        width: 280px;
-        height: 280px;
-        -webkit-transform: translate(0px, 0px);
-    }
-    
-    .fade {
-        -webkit-animation: fade 0.5s;
-        filter: brightness(80%);
-    }
-    
-    .brighten{
-        -webkit-animation: brighten 1s;
-        filter: brightness(100%);
-    }
-    
     #col1, #col2, #col3 {
         position: relative;
         left: 4rem;
-    }
-    
-    @-webkit-keyframes fade {
-        0% {
-            filter: brightness(100%);
-        }
-    
-        100% {
-            filter: brightness(80%);
-        }
-    }
-    
-    @-webkit-keyframes brighten {
-        0% {
-            filter: brightness(80%)
-        }
-    
-        100% {
-            filter: brightness(100%);
-        }
-    }
-    
-    .scaleup {
-        -webkit-animation: scaleup 0.5s;
-        transform: scale(1.1, 1.1);
-    }
-    
-    @-webkit-keyframes scaleup {
-        0% {
-          
-          transform: scale(1, 1);
-        }
-    
-        100% {
-           transform: scale(1.1, 1.1);
-        }
-    }
-     
-    .thumbnailFade {
-        -webkit-animation: thumbnailFade 1s;
-        opacity: 1;
-    }
-    
-    @-webkit-keyframes thumbnailFade {
-        0% {
-            opacity: 0;
-    
-        }
-        100% {
-    
-            opacity: 1;
-        }
     }
     
     #myImage {
@@ -369,23 +300,6 @@ span {
         margin-bottom: 30px;
     }
     
-    .deflate {
-        -webkit-animation: deflate 0.5s;
-        width: 280px;
-        height: 280px;
-        -webkit-transform: translate(0px, 0px);
-    }
-    
-    .fade {
-        -webkit-animation: fade 0.5s;
-        filter: brightness(80%);
-    }
-    
-    .brighten{
-        -webkit-animation: brighten 1s;
-        filter: brightness(100%);
-    }
-    
     #col1, #col2, #col3 {
         position: relative;
         left: 3rem;
@@ -393,61 +307,6 @@ span {
 
     #portfolioRow {
         /* width:120% !important; */
-    }
-    
-    @-webkit-keyframes fade {
-        0% {
-            filter: brightness(100%);
-        }
-    
-        100% {
-            filter: brightness(80%);
-        }
-    }
-    
-    @-webkit-keyframes brighten {
-        0% {
-            filter: brightness(80%)
-        }
-    
-        100% {
-            filter: brightness(100%);
-        }
-    }
-
-    
-    
-    .scaleup {
-        -webkit-animation: scaleup 0.5s;
-        transform: scale(1.1, 1.1);
-    }
-    
-    @-webkit-keyframes scaleup {
-        0% {
-          
-          transform: scale(1, 1);
-        }
-    
-        100% {
-           transform: scale(1.1, 1.1);
-        }
-    }
-    
-    
-    .thumbnailFade {
-        -webkit-animation: thumbnailFade 1s;
-        opacity: 1;
-    }
-    
-    @-webkit-keyframes thumbnailFade {
-        0% {
-            opacity: 0;
-    
-        }
-        100% {
-    
-            opacity: 1;
-        }
     }
     
     #myImage {
@@ -475,22 +334,6 @@ span {
         
     }
     
-    .deflate {
-        -webkit-animation: deflate 0.5s;
-        width: 230px;
-        height: 280px;
-        -webkit-transform: translate(0px, 0px);
-    }
-    
-    .fade {
-        -webkit-animation: fade 0.5s;
-        filter: brightness(80%);
-    }
-    
-    .brighten{
-        -webkit-animation: brighten 1s;
-        filter: brightness(100%);
-    }
     
     #col1, #col2, #col3 {
         position: relative;
@@ -501,60 +344,6 @@ span {
         /* width:130% !important; */
     }
     
-    @-webkit-keyframes fade {
-        0% {
-            filter: brightness(100%);
-        }
-    
-        100% {
-            filter: brightness(80%);
-        }
-    }
-    
-    @-webkit-keyframes brighten {
-        0% {
-            filter: brightness(80%)
-        }
-    
-        100% {
-            filter: brightness(100%);
-        }
-    }
-
-    
-    
-    .scaleup {
-        -webkit-animation: scaleup 0.5s;
-        transform: scale(1.1, 1.1);
-    }
-    
-    @-webkit-keyframes scaleup {
-        0% {
-          
-          transform: scale(1, 1);
-        }
-    
-        100% {
-           transform: scale(1.1, 1.1);
-        }
-    }
-    
-    
-    .thumbnailFade {
-        -webkit-animation: thumbnailFade 1s;
-        opacity: 1;
-    }
-    
-    @-webkit-keyframes thumbnailFade {
-        0% {
-            opacity: 0;
-    
-        }
-        100% {
-    
-            opacity: 1;
-        }
-    }
     
     #myImage {
         width: 250px !important;
@@ -578,22 +367,6 @@ span {
         margin-right: 30px !important;
     }
     
-    .deflate {
-        -webkit-animation: deflate 0.5s;
-        width: 200px;
-        height: 280px;
-        -webkit-transform: translate(0px, 0px);
-    }
-    
-    .fade {
-        -webkit-animation: fade 0.5s;
-        filter: brightness(80%);
-    }
-    
-    .brighten{
-        -webkit-animation: brighten 1s;
-        filter: brightness(100%);
-    }
     
     #col1, #col2, #col3 {
         position: relative;
@@ -604,60 +377,6 @@ span {
         /* width:140% !important; */
     }
     
-    @-webkit-keyframes fade {
-        0% {
-            filter: brightness(100%);
-        }
-    
-        100% {
-            filter: brightness(80%);
-        }
-    }
-    
-    @-webkit-keyframes brighten {
-        0% {
-            filter: brightness(80%)
-        }
-    
-        100% {
-            filter: brightness(100%);
-        }
-    }
-
-    
-    
-    .scaleup {
-        -webkit-animation: scaleup 0.5s;
-        transform: scale(1.1, 1.1);
-    }
-    
-    @-webkit-keyframes scaleup {
-        0% {
-          
-          transform: scale(1, 1);
-        }
-    
-        100% {
-           transform: scale(1.1, 1.1);
-        }
-    }
-    
-    
-    .thumbnailFade {
-        -webkit-animation: thumbnailFade 1s;
-        opacity: 1;
-    }
-    
-    @-webkit-keyframes thumbnailFade {
-        0% {
-            opacity: 0;
-    
-        }
-        100% {
-    
-            opacity: 1;
-        }
-    }
     
     #myImage {
         width: 250px !important;
@@ -680,23 +399,6 @@ span {
         margin-right: 30px !important;
     }
     
-    .deflate {
-        -webkit-animation: deflate 0.5s;
-        width: 200px;
-        height: 280px;
-        -webkit-transform: translate(0px, 0px);
-    }
-    
-    .fade {
-        -webkit-animation: fade 0.5s;
-        filter: brightness(80%);
-    }
-    
-    .brighten{
-        -webkit-animation: brighten 1s;
-        filter: brightness(100%);
-    }
-    
     #col1, #col2, #col3 {
         position: relative;
         left:-3 rem ;
@@ -709,67 +411,73 @@ span {
     #portfolioRow {
         /* width:140% !important; */
     }
-    
-    @-webkit-keyframes fade {
-        0% {
-            filter: brightness(100%);
-        }
-    
-        100% {
-            filter: brightness(80%);
-        }
-    }
-    
-    @-webkit-keyframes brighten {
-        0% {
-            filter: brightness(80%)
-        }
-    
-        100% {
-            filter: brightness(100%);
-        }
-    }
 
-    
-    
-    .scaleup {
-        -webkit-animation: scaleup 0.5s;
-        transform: scale(1.1, 1.1);
-    }
-    
-    @-webkit-keyframes scaleup {
-        0% {
-          
-          transform: scale(1, 1);
-        }
-    
-        100% {
-           transform: scale(1.1, 1.1);
-        }
-    }
-    
-    
-    .thumbnailFade {
-        -webkit-animation: thumbnailFade 1s;
-        opacity: 1;
-    }
-    
-    @-webkit-keyframes thumbnailFade {
-        0% {
-            opacity: 0;
-    
-        }
-        100% {
-    
-            opacity: 1;
-        }
-    }
-    
     #myImage {
         width: 250px !important;
         height: 250px !important;
         position:relative;
         border: 10px solid white
     }
+    
 }
 
+.fade {
+    -webkit-animation: fade 0.5s;
+    filter: brightness(80%);
+}
+
+.brighten{
+    -webkit-animation: brighten 1s;
+    filter: brightness(100%);
+}
+
+@-webkit-keyframes fade {
+    0% {
+        filter: brightness(100%);
+    }
+
+    100% {
+        filter: brightness(80%);
+    }
+}
+
+.fade2 {
+    -webkit-animation: fade2 0.5s;
+    filter: brightness(80%);
+}
+
+@-webkit-keyframes fade2 {
+    0% {
+        filter: brightness(87%);
+    }
+
+    100% {
+        filter: brightness(80%);
+    }
+}
+
+@-webkit-keyframes brighten {
+    0% {
+        filter: brightness(80%)
+    }
+
+    100% {
+        filter: brightness(100%);
+    }
+}
+
+.scaleup {
+    -webkit-animation: scaleup 0.5s;
+    transform: scale(1.1, 1.1);
+}
+
+@-webkit-keyframes scaleup {
+    0% {
+      
+      transform: scale(1, 1);
+    }
+
+    100% {
+       transform: scale(1.1, 1.1);
+    }
+}
