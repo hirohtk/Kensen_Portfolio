@@ -366,7 +366,7 @@ $(document).ready(function () {
         if (window.innerWidth <= 600 && ScrollY > 1000) {
             $("#contactBlock").addClass("flyInLeft");
         }
-        else if (ScrollY > 1700) {
+        else if (ScrollY > 2200) {
             $("#contactBlock").addClass("flyInLeft");
         }
     });
