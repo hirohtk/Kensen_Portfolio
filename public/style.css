@@ -109,6 +109,10 @@ nav {
     padding-bottom: 0px;
 }
 
+.technologies {
+    text-align: center;
+}
+
 .flyInLeft {
     -webkit-animation: flyInLeft 1s;
     opacity: 1;
@@ -165,7 +169,8 @@ span {
 .circle {
     height:50px;
     width: 50px;
-    border: 1px solid gray
+    border: 1px solid gray;
+    outline:none;
 }
 
 .backdrop {

@@ -139,7 +139,34 @@ $(document).ready(function () {
         {
             outDuration: 0,
             margin: 1
+        }
+    );
+
+    function openInNewTab(url) {
+        var win = window.open(url, '_blank');
+        win.focus();
+    }
+
+    var technologiesRedirect = function () {
+        $(".circleTech").on("click", function () {
+            switch ($(this).attr("alt")) {
+                case "React": openInNewTab("https://reactjs.org/")
+                    break;
+                case "Node": openInNewTab("https://nodejs.org/")
+                    break;
+                case "Express": openInNewTab("https://expressjs.com/")
+                    break;
+                case "JQuery": openInNewTab("https://jquery.com/")
+                    break;
+                case "MongoDB": openInNewTab("https://www.mongodb.com/")
+                    break;
+                case "MySQL": openInNewTab("https://www.mysql.com/")
+                    break;
+            }
         });
+    }
+
+    technologiesRedirect();
 
     var anim = function () {
 
