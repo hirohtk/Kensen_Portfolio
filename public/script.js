@@ -123,6 +123,24 @@ $(document).ready(function () {
     var time1;
     var time2;
 
+    var circleHover = function () {
+        $(".circleTech").mouseover(function () {
+            $(this).addClass("scaleup");
+
+            $(this).mouseleave(function () {
+                $(this).removeClass("scaleup");
+            });
+        });
+    }
+
+    circleHover();
+
+    $('.tooltipped').tooltip(
+        {
+            outDuration: 0,
+            margin: 1
+        });
+
     var anim = function () {
 
         $(".thumbnail").mouseover(function () {
