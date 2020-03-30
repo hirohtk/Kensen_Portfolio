@@ -400,18 +400,20 @@ $(document).ready(function () {
 
     $(document).scroll(function () {
         ScrollY = $(this).scrollTop();
+        console.log(ScrollY);
+        console.log(`window.innerWidth is ${window.innerWidth}`);
         // simulating media query for when blocks "fly in"
-        if (window.innerWidth <= 600 && ScrollY > 100) {
+        if (window.innerWidth <= 600 && ScrollY > 500) {
             $("#portfolioBlock").addClass("flyInRight");
         }
-        else if (ScrollY > 200) {
+        else if (window.innerWidth > 600 && ScrollY > 200) {
             $("#portfolioBlock").addClass("flyInRight");
         }
         // simulating media query for when blocks "fly in"
-        if (window.innerWidth <= 600 && ScrollY > 1000) {
+        if (window.innerWidth <= 600 && ScrollY > 1900) {
             $("#contactBlock").addClass("flyInLeft");
         }
-        else if (ScrollY > 2200) {
+        else if (window.innerWidth > 600 &&ScrollY > 2200) {
             $("#contactBlock").addClass("flyInLeft");
         }
     });
