@@ -177,6 +177,9 @@ $(document).ready(function () {
             $(".thumbnail").removeClass("brighten");
             $(this).addClass("scaleup");
             $(this).attr("id", "immune");
+            $(this).children().children("[name~='hideForMouseOver']").removeClass("hideForMouseOver");
+            // $(this).attr("data-position", "top");
+            // $(this).attr("data-tooltipped", "Click for more info!");
             fadeTrackerB();
             if (compareTime(time1, time2) === false) {
                 $(".thumbnail:not(#immune)").addClass("fade");
@@ -200,6 +203,7 @@ $(document).ready(function () {
                     $(".thumbnail:not(#immune)").addClass("brighten");
                 }
                 $(this).removeClass("scaleup");
+                $(this).children().children("[name~='hideForMouseOver']").addClass("hideForMouseOver");
                 $(this).attr("id", "");
                 $(".thumbnail").removeClass("fade");
                 $(".thumbnail").removeClass("fade2");
@@ -275,7 +279,7 @@ $(document).ready(function () {
         if (window.innerWidth >= 901) {
             function append() {
                 cardImage.append(cardImageChild);
-                cardContent.append(cardContentChild);
+                cardContent.append(cardContentChild, clickForMore);
                 outerDiv.append(cardImage, cardContent, cardReveal);
                 cardReveal.append(cardRevealChild1, pTag);
             }
@@ -284,10 +288,11 @@ $(document).ready(function () {
                 var outerDiv = $("<div class='card thumbnail'></div>");
                 var cardImage = $("<div class='card-image waves-effect waves-block waves-light'></div>");
                 var cardImageChild = $("<img class='activator' src='" + folio[i].img + "'>");
-                var cardContent = $("<div class='card-content'></div>");
+                var cardContent = $("<div class='card-content activator'></div>");
                 var cardContentChild = $("<span class='card-title activator grey-text text-darken-4 smallerTitles'>" + folio[i].name + "</span>");
+                var clickForMore = $("<p name='hideForMouseOver' class='hideForMouseOver activator'><i>Click for more info!</i><p>")
                 var cardReveal = $("<div class='card-reveal'></div>");
-                var cardRevealChild1 = $("<span class='card-title grey-text text-darken-4 smallerTitles'>" + folio[i].name + "<i class='material-icons right'>close</i></span>");
+                var cardRevealChild1 = $("<span class='card-title grey-text text-darken-4 smallerTitles'>" + "<b>" + folio[i].name + "</b>" + "<i class='material-icons right'>close</i></span>");
                 var pTag;
                 if (folio[i].deployed === "CLI App - Undeployable") {
                     pTag = $("<p>Github Repo: <a href=" + "'" + folio[i].repo + "'" + "target=_blank>Link</a><br>Deployed: CLI App - No Deployment</p>")

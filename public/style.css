@@ -123,6 +123,10 @@ nav {
     margin-right: 1rem;
 }
 
+.hideForMouseOver {
+    visibility: hidden;
+}
+
 @-webkit-keyframes flyInLeft {
     0% {
         opacity: 0;
