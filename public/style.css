@@ -118,6 +118,11 @@ nav {
     opacity: 1;
 }
 
+.moreInfo {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
 @-webkit-keyframes flyInLeft {
     0% {
         opacity: 0;
