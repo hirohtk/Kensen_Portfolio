@@ -1,53 +1,53 @@
 var chronological = [
-    {
-        name: "Word Guess Game",
-        img: "images/sushi-1080x584.jpg",
-        repo: "https://github.com/hirohtk/Word-guess-game",
-        deployed: "https://hirohtk.github.io/Word-guess-game/",
-        type: "FE"
-    },
-    {
-        name: "RPG Game",
-        img: "images/star_wars.gif",
-        repo: "https://github.com/hirohtk/Star-wars-game",
-        deployed: "https://hirohtk.github.io/Star-wars-game/",
-        type: "FE"
-    },
-    {
-        name: "Trivia Game",
-        img: "images/trivia_game.gif",
-        repo: "https://github.com/hirohtk/TriviaGame",
-        deployed: "https://hirohtk.github.io/TriviaGame/",
-        type: "FE"
-    },
-    {
-        name: "LIRI Bot",
-        img: "images/node_logo_black.png",
-        repo: "https://github.com/hirohtk/liri-node-app",
-        deployed: "CLI App - Undeployable",
-        type: "BE"
-    },
-    {
-        name: "Word Guess - CLI",
-        img: "images/01-WordGuess-Cli.gif",
-        repo: "https://github.com/hirohtk/word_guess_node",
-        deployed: "CLI App - Undeployable",
-        type: "BE"
-    },
-    {
-        name: "Bamazon - CLI",
-        img: "images/sql.png",
-        repo: "https://github.com/hirohtk/bamazon_assignment",
-        deployed: "CLI App - Undeployable",
-        type: "BE"
-    },
-    {
-        name: "FriendFinder",
-        img: "images/expressjs.jpg",
-        repo: "https://github.com/hirohtk/friend-finder",
-        deployed: "https://stormy-ocean-54298.herokuapp.com/",
-        type: "FS"
-    },
+    // {
+    //     name: "Word Guess Game",
+    //     img: "images/sushi-1080x584.jpg",
+    //     repo: "https://github.com/hirohtk/Word-guess-game",
+    //     deployed: "https://hirohtk.github.io/Word-guess-game/",
+    //     type: "FE"
+    // },
+    // {
+    //     name: "RPG Game",
+    //     img: "images/star_wars.gif",
+    //     repo: "https://github.com/hirohtk/Star-wars-game",
+    //     deployed: "https://hirohtk.github.io/Star-wars-game/",
+    //     type: "FE"
+    // },
+    // {
+    //     name: "Trivia Game",
+    //     img: "images/trivia_game.gif",
+    //     repo: "https://github.com/hirohtk/TriviaGame",
+    //     deployed: "https://hirohtk.github.io/TriviaGame/",
+    //     type: "FE"
+    // },
+    // {
+    //     name: "LIRI Bot",
+    //     img: "images/node_logo_black.png",
+    //     repo: "https://github.com/hirohtk/liri-node-app",
+    //     deployed: "CLI App - Undeployable",
+    //     type: "BE"
+    // },
+    // {
+    //     name: "Word Guess - CLI",
+    //     img: "images/01-WordGuess-Cli.gif",
+    //     repo: "https://github.com/hirohtk/word_guess_node",
+    //     deployed: "CLI App - Undeployable",
+    //     type: "BE"
+    // },
+    // {
+    //     name: "Bamazon - CLI",
+    //     img: "images/sql.png",
+    //     repo: "https://github.com/hirohtk/bamazon_assignment",
+    //     deployed: "CLI App - Undeployable",
+    //     type: "BE"
+    // },
+    // {
+    //     name: "FriendFinder",
+    //     img: "images/expressjs.jpg",
+    //     repo: "https://github.com/hirohtk/friend-finder",
+    //     deployed: "https://stormy-ocean-54298.herokuapp.com/",
+    //     type: "FS"
+    // },
     {
         name: "Eat Da Burger",
         img: "images/burger.jpg",
@@ -300,17 +300,17 @@ $(document).ready(function () {
                 else {
                     pTag = $("<p>Github Repo: <a href=" + "'" + folio[i].repo + "'" + "target=_blank>Link</a><br>Deployed: <a href=" + "'" + folio[i].deployed + "'" + "target=_blank>Link</a></p>")
                 }
-                if (i < 5 || i > 12 && i < 17) {
+                if (i % 3 === 0) {
                     $("#col1").append(outerDiv);
                     append();
                 }
 
-                if (i > 4 && i < 10) {
+                if ((i - 1) % 3 === 0) {
                     $("#col2").append(outerDiv);
                     append();
                 }
 
-                if (i > 9 && i < 15) {
+                if ((i - 2) % 3 === 0) {
                     $("#col3").append(outerDiv);
                     append();
                 }
