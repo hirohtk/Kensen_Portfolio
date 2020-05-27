@@ -97,6 +97,13 @@ var chronological = [
         deployed: "https://quiet-hamlet-85082.herokuapp.com/",
         type: "FS"
     },
+    {
+        name: "Type Race",
+        img: "images/how-to-disable-a-laptop-keyboard-1000x1000.jpg",
+        repo: "https://github.com/hirohtk/react_hooks_typerace",
+        deployed: "https://fast-tundra-10719.herokuapp.com/",
+        type: "FS"
+    },
 ]
 
 // SORTING:  Can make new objects and push based on date created (need to add field), etc
@@ -415,10 +422,10 @@ $(document).ready(function () {
             $("#portfolioBlock").addClass("flyInRight");
         }
         // simulating media query for when blocks "fly in"
-        if (window.innerWidth <= 600 && ScrollY > 1900) {
+        if (window.innerWidth <= 600 && ScrollY > 1200) {
             $("#contactBlock").addClass("flyInLeft");
         }
-        else if (window.innerWidth > 600 &&ScrollY > 2200) {
+        else if (window.innerWidth > 600 &&ScrollY > 1700) {
             $("#contactBlock").addClass("flyInLeft");
         }
     });
