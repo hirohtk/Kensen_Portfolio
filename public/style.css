@@ -290,7 +290,7 @@ span {
     
 }
 
-@media only screen and (max-width: 2000px) {
+@media only screen and (max-width: 3000px) {
     .thumbnail {
         width: 280px;
         height: 280px;

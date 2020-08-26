@@ -104,6 +104,13 @@ var chronological = [
         deployed: "https://fast-tundra-10719.herokuapp.com/",
         type: "FS"
     },
+    {
+        name: "Friend Forecast",
+        img: "images/weather2.png",
+        repo: "https://github.com/hirohtk/weather",
+        deployed: "https://immense-cove-75264.herokuapp.com/",
+        type: "FS"
+    },
 ]
 
 // SORTING:  Can make new objects and push based on date created (need to add field), etc
